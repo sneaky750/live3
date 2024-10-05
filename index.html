@@ -25,15 +25,35 @@
         }
 
         .screenshot {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
     </style>
 </head>
 <body>
     <div class="screenshot-container">
-        <img src="eng2.png" alt="Screenshot" class="screenshot">
+        <img src="eng2(1).png" alt="Screenshot" class="screenshot" id="screenshot">
     </div>
+
+    <script>
+        const screenshots = [
+            "screenshot1.jpg", "screenshot2.jpg", "screenshot3.jpg", "screenshot4.jpg", "screenshot5.jpg",
+            "screenshot6.jpg", "screenshot7.jpg", "screenshot8.jpg", "screenshot9.jpg", "screenshot10.jpg",
+            "screenshot11.jpg", "screenshot12.jpg", "screenshot13.jpg", "screenshot14.jpg", "screenshot15.jpg",
+            "screenshot16.jpg", "screenshot17.jpg", "screenshot18.jpg", "screenshot19.jpg", "screenshot20.jpg"
+        ];
+        let currentIndex = 0;
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowRight") {
+                currentIndex = (currentIndex + 1) % screenshots.length;
+                document.getElementById("screenshot").src = screenshots[currentIndex];
+            } else if (event.key === "ArrowLeft") {
+                currentIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
+                document.getElementById("screenshot").src = screenshots[currentIndex];
+            }
+        });
+    </script>
 </body>
 </html>
